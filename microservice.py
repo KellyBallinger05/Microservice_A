@@ -113,7 +113,7 @@ def monitor_queries():
                 for row in result:
                     writer.writerow(row)
             
-            # query file is removed after processing
+            # OPTIONAL file removal after processing. If you do not want the file to be removed, you can comment this out during implementation and choose what works for you.
             os.remove(QUERY_FILE)
             print("Query processed and response was successfully written.")
         time.sleep(1)
