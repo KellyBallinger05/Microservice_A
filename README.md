@@ -49,7 +49,7 @@ After the microservice processes the request, it will write the output to a CSV 
    - A civilization query will include a CSV with a header such as LeaderName with a row containing that leader's name
    - A leader query will include a CSV with a header such as LeaderName, Civilizations, LeaderBonus, YieldTagName and CustomTagName.
 3. **Processing our data:**
-   After the file is reader, our data is processed. Included in the code is an optional delete regarding the response file so you can continue querying without worrying about file management.
+   After the file is read, our data is processed. Included in the code is an optional delete regarding the response file so you can continue querying without worrying about file management.
 
 ### Example Call in Python
 
