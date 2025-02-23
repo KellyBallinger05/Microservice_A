@@ -10,6 +10,35 @@ To request your data from the microservice, the program writes a query.csv CSV f
 - A civilization name like Russia or England, where the microservices pulls the leaders that are associated with those civializations.
 - A leaders name, such as Catherine or Victoria, in which case the microservice will return the specified leader details that were given to me by the directions.
 
+### Example call in Python
+```Python
+import csv
+import os
+
+# this is the shared directory and file paths
+SHARED_DIR = 'Microservice_A'
+QUERY_FILE = os.path.join(SHARED_DIR, 'query.csv)
+
+# existance check
+if not os.path.exists(SHARED_DIR):
+   os.makedirs(SHARED_DIR)
+
+def request_data(query_value):
+   """
+   this writes the query CSV file that contains our query value,
+   CSV contains one header with one row of the user input.
+   """
+   with open(QUERY_FILE, 'w', newline='') as csvfile:
+      fieldnames = ['value']
+      writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+      writer.writeheader()
+      writer.writerow({'value': query_value})
+   print(f"request sent with query: {query_value}")
+
+# example
+request_data('Russia')
+```
+
 ## How to Programatically RECEIVE Data:
 After the microservice processes the request, it will write the output to a CSV file named response.csv in the same shared directory. Program then retrieves this file and accesses the data:
 
