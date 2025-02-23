@@ -1,3 +1,7 @@
+""" 
+This is simply a testing main program to better show the functionality of the microservice, per Canvas instructions - this should not be used nor is it required to be used to use the microservice
+"""
+
 import csv
 import os
 import time
