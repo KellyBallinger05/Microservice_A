@@ -17,7 +17,7 @@ import os
 
 # this is the shared directory and file paths
 SHARED_DIR = 'Microservice_A'
-QUERY_FILE = os.path.join(SHARED_DIR, 'query.csv)
+QUERY_FILE = os.path.join(SHARED_DIR, 'query.csv')
 
 # existance check
 if not os.path.exists(SHARED_DIR):
