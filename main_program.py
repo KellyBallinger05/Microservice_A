@@ -1,5 +1,6 @@
 """ 
-This is simply a testing main program to better show the functionality of the microservice, per Canvas instructions - this should not be used nor is it required to be used to
+This is simply a testing main program to better show the functionality of the microservice, 
+per Canvas instructions - this should not be used nor is it required to be used to
 use the microservice.
 """
 
@@ -21,12 +22,14 @@ def write_query(value):
     
     contains the 'value' header and the row containing user input
     """
+
     with open(QUERY_FILE, 'w', newline='') as csvfile:
         fieldnames = ['value']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerow({'value': value})
     print(f"Query written with value: {value}")
+
 
 def read_response():
     """this reads and prints our csv file response"""
@@ -41,15 +44,21 @@ def read_response():
     else:
         print("Response file not found.")
 
-# example usage:
-# change value to test different scenarios for your project (different civ queries), or different leader queries
-# write_query('Russia')  # civilization query
-# write_query('Catherine')  # leader query
 
-# response generation wait
-while not os.path.exists(RESPONSE_FILE):
-    print("Waiting for response...")
-    time.sleep(1)
+def main():
+    # prompt user for a query 
+    value = input("Enter query value: ")
+    
+    write_query(value)
+    
+    # wait for the microservice 
+    print("waiting...")
+    while not os.path.exists(RESPONSE_FILE):
+        time.sleep(1)
 
-# response display
-read_response()
+    # response display
+    read_response()
+
+
+if __name__ == '__main__':
+    main()
